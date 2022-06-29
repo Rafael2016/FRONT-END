@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>DataTable</title>
+	<meta http-equiv="cache-control" content="no-cache" />
+	<script type="text/javascript" src="http://sigo.telemont.com.br/publico/scripts/HDataTable.js"></script>
+</head>
+<body>
+	<table id="tabela">
+		<thead style="text-align: center!important;">
+			<tr>
+				<th>Teste</th>
+				<th>Teste01</th>                        
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>	</table>
+</body>
+<script type="text/javascript">
+	
+	var dataset = [
+	{'item':'Teste01','item2':'Teste01'},
+	{'item':'Teste02','item2':'Teste02'}
+	];
+
+	new HDataTable('tabela', {
+		dataset : dataset,
+                // ordemColuna: ['obs']
+                // removerBotao: [ 'copy', 'pdf']
+                // btnAction    : ['idSolicitacao']
+            });
+
+        </script>
+        </html>

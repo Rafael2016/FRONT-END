@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DataSet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .quadrado{
+            width: 371px;
+            height: 750px;
+            display: inline;
+            cursor: pointer;
+            
+        }
+        #painel{
+            border: solid 3px #000;
+            border-radius: 10px;
+            padding: 10px;
+            width: 500px;
+            height: 100px;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div id="painel"></div>
+    <div id="objeto" class="quadrado"><img src="moto.jpg" data-cor="branco" data-cc="110"></div>
+    <div id="objeto1" class="quadrado"><img src="moto.jpg" data-cor="preta" data-cc="300"></div>
+    <div id="objeto2" class="quadrado"><img src="moto.jpg" data-cor="vermelha" data-cc="600"></div>
+
+    <script type="text/javascript">
+    
+    window.addEventListener('load',inicia);
+
+    function inicia() {
+        document.getElementById('objeto').addEventListener('click',getMoto);
+    }
+    
+
+    function getMoto(){
+        
+        var obj = event.target;
+        var painel = document.getElementById('painel');
+        
+
+        painel.innerHTML = "Cor: "+ obj.dataSet.cc; 
+    }
+    
+    
+    </script>
+</body> 
+</html>
