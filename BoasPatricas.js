@@ -206,3 +206,153 @@ async function getTodos() {
 
   console.log('Finished!');
 }
+
+/**
+ * TOOGLE JAVACRIPT
+ * 
+ */
+
+resetSenha=(event)=>{
+
+    document.getElementById("section-dados").classList.remove("hide")
+    
+    // Toggle
+    $formResenha = document.getElementById("form-recuperaSenha")
+
+    if($formResenha.classList.contains("hide")){
+        $formResenha.classList.remove("hide")
+       
+    }else{
+        $formResenha.classList.add("hide")
+    }
+    
+ }
+
+
+ // REMOVE EMOJI DOS CARACTERES EXPRESSÃO REGULAR
+ let x = '🖐️ Post Test'
+ x = x.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '')
+console.log(x)
+
+
+/// PREENCHENDO  FORMULARIO FLUIG 
+parent.WCMAPI.Create({ 
+        url: '/api/public/2.0/cards/create', 
+        data: JSON.stringify(
+            { 
+                "parentDocumentId": 17213,
+                "version": 1000, 
+                "formData": [ 
+                    { 
+                        "name": "dTitle", 
+                        "value": "rafael Teste" 
+                    }, 
+                    { 
+                        "name": "dAuthor", 
+                        "value": "Rafael Luz"
+                    }
+                ]
+            }),
+        
+            success: function(data){
+                FLUIGC.toast({
+                    title:'Aviso',
+                    message:'Documento adicionado aos Prioritários',
+                    type:'info'
+                });
+
+            console.log(data)
+        },
+        error: function(error){
+           console.error(error)
+        }
+    });
+
+
+// FETCH 
+// dados a serem enviados pela solicitação POST
+let _data = {
+  title: "foo",
+  body: "bar", 
+  userId:1
+}
+
+fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: "POST",
+  body: JSON.stringify(_data),
+  headers: {"Content-type": "application/json; charset=UTF-8"}
+})
+.then(response => response.json()) 
+.then(json => console.log(json));
+.catch(err => console.log(err));
+
+
+let resLocalidades = await fetch(`${_ENDPOINT}integracao_fluig/ramais/localidades/listar`, {
+            method: "GET",
+            headers: {
+                "client_id": _CLIENT_ID,
+                "access_token":_ACCESS_TOKEN,
+                "Content-Type": "application/json"
+            }
+        }).then((res) => res.json())
+
+        if (isEmpty(resLocalidades)) {
+            self.messageToast("Erro", "Erro ao buscar localidades", "warning")
+            console.error(resLocalidades)
+            return false
+        }
+
+        return resLocalidades
+
+
+/***
+ *@GERANDO TOKEN 
+ */ 
+
+Math.random().toString(30).substr(2)
+
+/**
+ * @SELECIONAR RADIO BUTTON 
+ */
+
+let valueButton = document.querySelector("input[name='tipoContaPj']:checked").value
+
+/**
+ * @DEBUGAR ARRAY OBJETOS
+ */
+
+let data = [{nome:'Rafael Gomes',idade:38},{nome:'Bethy',idade:37}]
+
+console.log(JSON.stringify(data,null,2))
+
+
+/**
+ * @CONVERT ARQUIVO EM BASE64
+ */
+
+const convertToBase64 = (file) => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+});
+
+//Pegar input com arquivo
+const file = document.querySelector('#myfile').files[0];
+const convertedFile = await convertToBase64(file)
+
+/**
+ * @CONVERT STRING  EM BASE64
+ */
+var string = 'DevPleno'
+
+// Convertendo para Base64
+var emBase64 = btoa(string)
+ 
+// Voltando para string
+var deBase64 = atob(emBase64)
+console.log(deBase64)  
+
+
+//pegar 1º ocorrencia de uma string separado por espaço
+let  [, cepTipoRua]  = dsCep.values[0]["ds_end"].match(/(\S+) /) || [];
